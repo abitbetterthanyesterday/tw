@@ -16,7 +16,7 @@ class TaskParser {
 
   List<Task> parse(){
     const splitter = LineSplitter();
-    return splitter.convert(input).map((line) => Task(line)).toList();
+    return splitter.convert(input).where((line) => line.trim().isNotEmpty).map((line) => Task(line)).toList();
   }
 }
 

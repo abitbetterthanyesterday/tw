@@ -15,9 +15,18 @@ void main(){
 
     test('it returns one task if there is one', (){
       TestFile testFile = TestFile('''
-[ description: 'hello']
-''');
+      [ description: 'hello']
+      ''');
       expect(TaskParser(testFile.content).parse(), hasLength(1));
+      testFile.teardown();
+    });
+
+    test('it returns one task if there is one', (){
+      TestFile testFile = TestFile('''
+      [ description: 'hello']
+      [ description 'world']
+      ''');
+      expect(TaskParser(testFile.content).parse(), hasLength(2));
       testFile.teardown();
     });
   }
